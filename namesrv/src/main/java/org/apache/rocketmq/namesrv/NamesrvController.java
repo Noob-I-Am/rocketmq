@@ -89,7 +89,7 @@ public class NamesrvController {
             @Override
             public void run() {
                 NamesrvController.this.routeInfoManager.scanNotActiveBroker();
-            }
+            } //没10秒一次，移除出于未激活状态的break
         }, 5, 10, TimeUnit.SECONDS);
 
         this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
