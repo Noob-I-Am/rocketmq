@@ -143,6 +143,7 @@ public class NamesrvStartup {
             System.exit(-3);
         }
 
+        //注册jvm钩子函数，进行优雅停机。在jvm进程关闭之前，先将线程池关闭
         Runtime.getRuntime().addShutdownHook(new ShutdownHookThread(log, new Callable<Void>() {
             @Override
             public Void call() throws Exception {

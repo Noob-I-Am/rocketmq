@@ -888,7 +888,9 @@ public class BrokerController {
         }
 
         this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-
+            /*
+            broker发送心跳包
+             */
             @Override
             public void run() {
                 try {

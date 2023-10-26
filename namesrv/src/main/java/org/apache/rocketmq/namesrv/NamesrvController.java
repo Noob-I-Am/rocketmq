@@ -89,7 +89,7 @@ public class NamesrvController {
             @Override
             public void run() {
                 NamesrvController.this.routeInfoManager.scanNotActiveBroker();
-            } //每10秒一次，移除出于未激活状态的broker
+            } //每10秒一次，移除处于未激活状态的broker
         }, 5, 10, TimeUnit.SECONDS);
 
         this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -98,6 +98,7 @@ public class NamesrvController {
             public void run() {
                 NamesrvController.this.kvConfigManager.printAllPeriodically();
             }
+            //每10min打印一次kv配置
         }, 1, 10, TimeUnit.MINUTES);
 
         if (TlsSystemConfig.tlsMode != TlsMode.DISABLED) {

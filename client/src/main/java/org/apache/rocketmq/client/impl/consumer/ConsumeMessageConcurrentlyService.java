@@ -252,6 +252,7 @@ public class ConsumeMessageConcurrentlyService implements ConsumeMessageService 
         final ConsumeConcurrentlyContext context,
         final ConsumeRequest consumeRequest
     ) {
+        //消费成功的idx, ackIndex从0开始，最大size-1，如果没有任何成功则可以设为-1
         int ackIndex = context.getAckIndex();
 
         if (consumeRequest.getMsgs().isEmpty())
